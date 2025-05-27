@@ -21,8 +21,15 @@ score = 0
 
 while True:
     print(logo)
-    person_1 = get_random_person()
+    if score == 0:
+        person_1 = get_random_person()
+    else:
+        print(f"Yes. You are absolutely RIGHT!\nCurrent Score: {score}")
+        person_1 = next_person
+
     person_2 = get_random_person()
+    if person_1 == person_2:
+        person_2 = get_random_person()
 
     print(f"Compare A: {person_1['name']}, a {person_1['description']}, from {person_1['country']}")
     print(vs)
@@ -35,7 +42,7 @@ while True:
 
     if user_choice == more_followers:
         score += 1
-        print(f"Yes. You are absolutely RIGHT!\nCurrent Score: {score}")
+        next_person = choice([person_1, person_2])
     else:
         print(f"Oh no! That's wrong.\nFinal Score: {score}")
         break
