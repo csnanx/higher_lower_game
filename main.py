@@ -25,6 +25,7 @@ while True:
     person_2 = get_random_person()
 
     print(f"Compare A: {person_1['name']}, a {person_1['description']}, from {person_1['country']}")
+    print(vs)
     print(f"Compare B: {person_2['name']}, a {person_2['description']}, from {person_2['country']}")
 
     user_str = input("Who has more followers? Type 'A' or 'B': ").upper()
@@ -34,9 +35,7 @@ while True:
 
     if user_choice == more_followers:
         score += 1
-        print(f"Yes. You are absolutely RIGHT! Current Score: {score}")
+        print(f"Yes. You are absolutely RIGHT!\nCurrent Score: {score}")
     else:
-        print(f"Oh no! That's wrong.")
+        print(f"Oh no! That's wrong.\nFinal Score: {score}")
         break
-
-print(f"Final Score: {score}")
