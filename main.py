@@ -5,31 +5,38 @@ from art import logo, vs
 def get_random_person():
     return choice(data)
 
-print(logo)
-person_1 = get_random_person()
-person_2 = get_random_person()
+def turn_to_dict(user_choice):
+    if user_choice == "A":
+        return person_1
+    elif user_choice == "B":
+        return person_2
+
+def compare_followers(dict_1, dict_2):
+    if person_1["follower_count"] > person_2["follower_count"]:
+        return person_1
+    else:
+        return person_2
+
 score = 0
 
+while True:
+    print(logo)
+    person_1 = get_random_person()
+    person_2 = get_random_person()
 
-print(f"Compare A: {person_1['name']}, a {person_1['description']}, from {person_1['country']}")
-print(f"Compare B: {person_2['name']}, a {person_2['description']}, from {person_2['country']}")
+    print(f"Compare A: {person_1['name']}, a {person_1['description']}, from {person_1['country']}")
+    print(f"Compare B: {person_2['name']}, a {person_2['description']}, from {person_2['country']}")
 
-user_choice = input("Who has more followers? Type 'A' or 'B': ").upper()
+    user_str = input("Who has more followers? Type 'A' or 'B': ").upper()
 
-if user_choice == "A":
-    user_choice = person_1
-elif user_choice == "B":
-    user_choice = person_2
+    user_choice = turn_to_dict(user_str)
+    more_followers = compare_followers(person_1, person_2)
 
-if person_1["follower_count"] > person_2["follower_count"]:
-    more_followers = person_1
-else:
-    more_followers = person_2
-
-if user_choice == more_followers:
-    score += 1
-    print("Yes. You are absolutely RIGHT!")
-else:
-    print(f"Oh no! That's wrong.")
+    if user_choice == more_followers:
+        score += 1
+        print(f"Yes. You are absolutely RIGHT! Current Score: {score}")
+    else:
+        print(f"Oh no! That's wrong.")
+        break
 
 print(f"Final Score: {score}")
