@@ -51,7 +51,7 @@ game_over = False
 while not game_over:
     score = 0
     higher_lower()
-    play_again = input("\nDo you want to play again? (Type 'yes' or 'no'): ")
+    play_again = input("\nDo you want to play again? (Type 'yes' or 'no'): ").lower()
     if play_again == "yes":
         game_over = False
     else:
