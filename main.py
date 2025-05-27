@@ -5,17 +5,17 @@ from art import logo, vs
 def get_random_person():
     return choice(data)
 
-def turn_to_dict(user_choice):
+def turn_to_dict(user_choice, person_1, person_2):
     if user_choice == "A":
         return person_1
     elif user_choice == "B":
         return person_2
 
 def compare_followers(dict_1, dict_2):
-    if person_1["follower_count"] > person_2["follower_count"]:
-        return person_1
+    if dict_1["follower_count"] > dict_2["follower_count"]:
+        return dict_1
     else:
-        return person_2
+        return dict_2
 
 score = 0
 
@@ -28,7 +28,7 @@ while True:
         person_1 = next_person
 
     person_2 = get_random_person()
-    if person_1 == person_2:
+    while person_1 == person_2:
         person_2 = get_random_person()
 
     print(f"Compare A: {person_1['name']}, a {person_1['description']}, from {person_1['country']}")
@@ -37,7 +37,7 @@ while True:
 
     user_str = input("Who has more followers? Type 'A' or 'B': ").upper()
 
-    user_choice = turn_to_dict(user_str)
+    user_choice = turn_to_dict(user_str, person_1, person_2)
     more_followers = compare_followers(person_1, person_2)
 
     if user_choice == more_followers:
