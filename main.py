@@ -19,4 +19,8 @@ if user_choice == "A":
 elif user_choice == "B":
     user_choice = person_2
 
-print(user_choice)
+if person_1["follower_count"] > person_2["follower_count"]:
+    more_followers = person_1
+else:
+    more_followers = person_2
+
